@@ -10,6 +10,20 @@ namespace backend_web_dev_assignment2.Controllers
 {
     public class J3Controller : ApiController
     {
+        ///<link>https://cemc.math.uwaterloo.ca/contests/computing/past_ccc_contests/2022/ccc/juniorEF.pdf</link>
+		///<problem-type>J3</problem-type>
+		///<problem-name>Harp Tuning</problem-name>
+        ///<summary>
+        ///Method takes one string input containing instructions and after processing it returns an array of strings containing legible instructions
+        ///</summary>
+        ///<param name="instructions">A string input</param>
+        ///<example>
+        ///GET api/J3/harpTuning/AFB+8HC-4 -> ["AFB tighten 8", "HC loosen 4"]
+        ///</example>
+        ///<example>
+        ///GET api/J3/harpTuning/AFB+8SC-4H-2GDPE+9 -> ["AFB tighten 8", "SC loosen 4", "H loosen 2", "GDPE tighten 9"]
+        ///</example>
+        ///<returns>An array of legible instructions</returns>
         [Route("api/J3/harpTuning/{instructions}")]
         [HttpGet]
         public IEnumerable<string> harpTuning(string instructions)
@@ -59,6 +73,7 @@ namespace backend_web_dev_assignment2.Controllers
                 i++;
             }
 
+            //For the last instruction, store the result in the list
             if(hasSeenANumber)
             {
                 listOfTuningInstructions.Add(tempStr.ToString());
